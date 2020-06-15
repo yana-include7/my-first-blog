@@ -1,0 +1,12 @@
+
+{% extends 'blog/post_list.html' %}
+{% block content3 %}
+{% load static %}
+      <div class="col-md-4">
+        <h2>Последнее место работы</h2>
+        <p>июнь 2019 — текщее время</p>
+        <p>ООО "Облако",должность программист. Разработка кроссплатформенного ПО на Qt для торговых точек. </p>
+
+        <p><a class="btn btn-secondary" href="{% url 'post_edit' pk=9 %}" role="button">Узнать больше &raquo;</a></p>
+      </div>
+{% endblock %}

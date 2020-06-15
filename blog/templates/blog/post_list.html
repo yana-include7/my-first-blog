@@ -1,15 +1,27 @@
 {% extends 'blog/base.html' %}
-{% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
+{% block content1 %}
+<!doctype html>
+<html lang="en">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Привет, меня зовут Яна, и это моё резюме</h1>
+      <p>Создавалось исключительно в учебных целях, для изучения Django. Ниже вы можете узнать больше о моих проектах.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Связаться в Telegram &raquo;</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+    {% block content2 %}
+    {% endblock %}
 
-                {{ post.published_date }}
-                —
-                {{ post.created_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
+    </div>
+    <hr>
+
+  </div> <!-- /container -->
+
+</html>
+
 {% endblock %}
+

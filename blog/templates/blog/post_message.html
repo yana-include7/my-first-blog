@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Вы уверенны, что хотите удалить пост?</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+
+        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}">Да</a>
+        <a class="btn btn-default" href="{% url 'post_detail' pk=post.pk %}">Нет</a>
+    </form>
+{% endblock %}
