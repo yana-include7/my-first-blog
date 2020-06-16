@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
+from .models import Photo
 from .forms import PostForm
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 import logging
 logger = logging.getLogger("mylogger")
 
@@ -31,6 +34,7 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
+
 def post_edit(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_edit.html', {'posts': posts})
@@ -49,4 +53,16 @@ def post_remove(request, pk):
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_message.html', {'post': post})
+
+class PhotoCreate(CreateView):
+    model = Photo
+    fields = '__all__'
+
+
+class PhotoUpdate(UpdateView):
+    model =  Photo
+    fields = '__all__'
+
+class PhotoDelete(DeleteView):
+    model =  Photo
 

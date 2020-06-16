@@ -15,9 +15,17 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     profile_image =  models.ImageField(upload_to='img',default='img/9.png')
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])
 
 
-    def __str__(self):
-        return self.title
+
+class Photo(models.Model):
+    title = models.ForeignKey('Post', on_delete=models.SET_NULL, null=True)
+    profile_image= models.ImageField(upload_to='img', default='img/9.png')
+
+
+
