@@ -71,16 +71,27 @@
                 </div>
               </div>
             </div>
-            <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="" class="imagepreview" style="width: 100%;" >
+               <!-- image trigger modal -->
+                  <a data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
+                  <img src="{{photo_post.profile_image.url}}">
+                  </a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h4 class="modal-title" id="myModalLabel">{{ object.title }}</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                           </div>
+                           <div class="modal-body">
+                              <img itemprop="image" src='{{ img.file.url }}'  class="img-rounded" style="width:100%">
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
             {% endfor %}
 
           </div>
@@ -88,6 +99,7 @@
       </div>
 
     </main>
+
 
     <footer class="text-muted">
       <div class="container">
