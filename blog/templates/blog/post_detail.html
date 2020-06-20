@@ -50,7 +50,7 @@
       </section>
 
       <div class="album py-5 bg-light">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             {% for photo_post in post.photo_set.all %}
 
@@ -60,38 +60,12 @@
                 <img class="card-img-top" src="{{photo_post.profile_image.url}}" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
                 </a>
                   <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">{{photo_post.text}}</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
-               <!-- image trigger modal -->
-                  <a data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
-                  <img src="{{photo_post.profile_image.url}}">
-                  </a>
-                  <!-- Modal -->
-                  <div class="modal fade" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                     <div class="modal-dialog">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h4 class="modal-title" id="myModalLabel">{{ object.title }}</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           </div>
-                           <div class="modal-body">
-                              <img itemprop="image" src='{{ img.file.url }}'  class="img-rounded" style="width:100%">
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
             {% endfor %}
 
           </div>
@@ -106,6 +80,7 @@
         <p class="float-right">
           <a href="#">Наверх</a>
         </p>
+        <p>Ссылка на проект <a href="https://github.com/yana-include7/portfolio">https://github.com/yana-include7/portfolio</a> &#128517</p>
       </div>
     </footer>
 
