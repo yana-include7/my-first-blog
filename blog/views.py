@@ -8,14 +8,26 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from datetime import datetime
 import logging
 logger = logging.getLogger("mylogger")
 
 # Create your views here.
 
+
 def post_list(request):
+    myDate = datetime.now()
+    if myDate.hour>=6 and myDate.hour<12:
+        titl="Доброе утро &#127749;"
+    elif myDate.hour>=12 and myDate.hour<17:
+        titl="Добрый день &#9728;"
+    elif myDate.hour>=17 and myDate.hour>21:
+        titl="Добрый вечер &#10024;"
+    else:titl="Доброй ночи &#127769;"
+
+
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/post_view.html', {'posts': posts})
+    return render(request, 'blog/post_view.html', {'posts': posts,'titl': titl})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
